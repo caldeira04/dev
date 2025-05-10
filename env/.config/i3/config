@@ -28,6 +28,9 @@ exec --no-startup-id picom -b
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
+# Keeb config
+exec --no-startup-id setxkbmap -model pc104 -layout us -variant intl
+
 # Monitors configuration
 exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 144
 exec --no-startup-id mons --primary DP-0
