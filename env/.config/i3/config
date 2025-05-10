@@ -28,6 +28,11 @@ exec --no-startup-id picom -b
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
+# Monitors configuration
+exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 144
+exec --no-startup-id mons --primary DP-0
+exec --no-startup-id mons -e right
+
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
