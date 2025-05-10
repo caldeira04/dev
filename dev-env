@@ -67,6 +67,7 @@ copy $DEV_ENV/env/.zsh_profile $HOME/.zsh_profile
 copy $DEV_ENV/env/.p10k.zsh $HOME/.p10k.zsh
 copy $DEV_ENV/env/.zshrc $HOME/.zshrc
 copy $DEV_ENV/dev-env $HOME/.local/scripts/dev-env
+copy $DEV_ENV/env/.tmux.conf $HOME/.tmux.conf
 
 i3 restart
 

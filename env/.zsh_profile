@@ -1,3 +1,10 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export PERSONAL="$XDG_CONFIG_HOME/personal"
 export DEV_ENV="$HOME/dev"
+
+addToPathFront() {
+    if [[ ! -z "$2" ]] || [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+addToPathFront $HOME/.local/scripts
