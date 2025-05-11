@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+pushd ~/dev/env/.config/nvim
+git add .
+git commit -m 'automated dev commit'
+git push
+popd
+
+pushd ~/dev/tmux-sessionizer/
+git add .
+git commit -m 'automated dev commit'
+git push
+popd
+
+pushd ~/dev
+git add .
+git commit -m 'automated dev commit'
+git push
+popd
+
