@@ -26,19 +26,6 @@ log() {
 
 log "env: $DEV_ENV"
 
-which_desktop () {
-  if pgrep -x "Hyprland" > /dev/null; then
-    echo "Hyprland detectado"
-    # copia configs do Hyprland
-elif pgrep -x "i3" > /dev/null; then
-    echo "i3 detectado"
-    # copia configs do i3
-else
-    echo "Nenhum dos dois detectado, bah meu"
-fi
-
-}
-
 update_files() {
     log "copying over files from: $1"
     pushd $1 &> /dev/null
@@ -85,14 +72,6 @@ copy $DEV_ENV/env/.tmux.conf $HOME/.tmux.conf
 copy $DEV_ENV/dev-env $HOME/.local/scripts/dev-env
 copy $DEV_ENV/tmux-sessionizer/tmux-sessionizer $HOME/.local/scripts/tmux-sessionizer
 
-desktop=$(which_desktop)
-
-if [[ "$desktop" == "i3" ]]; then
-  log "restarting i3"
-  i3-msg restart
-elif [[ "$desktop" == "Hyprland" ]]; then
-  log "restarting hyprland"
-  hyprctl reload
-fi
-
+i3-msg restart
+hyprctl reload
 log "dev files installed :)"
