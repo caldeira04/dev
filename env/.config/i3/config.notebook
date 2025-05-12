@@ -1,2 +1,1 @@
-
 exec --no-startup-id setxkbmap -model pc104 -layout br -variant thinkpad

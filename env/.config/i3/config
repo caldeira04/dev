@@ -25,10 +25,6 @@ font pango:monospace 8
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id picom -b
 
-# Monitors configuration
-exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 144
-exec --no-startup-id mons --primary DP-0
-exec --no-startup-id mons -e right
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
