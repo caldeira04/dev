@@ -73,5 +73,4 @@ copy $DEV_ENV/dev-env $HOME/.local/scripts/dev-env
 copy $DEV_ENV/tmux-sessionizer/tmux-sessionizer $HOME/.local/scripts/tmux-sessionizer
 
 i3-msg restart
-hyprctl reload
 log "dev files installed :)"
