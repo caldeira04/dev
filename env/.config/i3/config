@@ -182,3 +182,8 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# class
+client.focused #ebbcba #ebbcba #000000
+client.focused_inactive #ebbcba #000000 #ffffff
+client.unfocused #000000 #000000 #ffffff
