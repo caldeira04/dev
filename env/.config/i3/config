@@ -55,6 +55,10 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym $mod+Return exec --no-startup-id kitty
 bindsym $mod+bar exec kitty -e tmux-sessionizer
+bindsym $mod+v exec kitty -e nvim
+
+# start yazi with fzf
+bindsym $mod+q exec --no-startup-id "kitty -e open-yazi"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -64,9 +68,6 @@ bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 
 # start rofi
 bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun -show-icons"
-
-# start yazi with fzf
-bindsym $mod+q exec --no-startup-id "kitty -e open-yazi"
 
 # change focus
 bindsym $mod+h focus left
