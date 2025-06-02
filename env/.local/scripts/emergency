@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+dry_run="0"
+
+if [[ $1 == "--dry" ]]; then
+    dry_run="1"
+fi
+
+log() {
+  if [[ $dry_run == "1" ]]; then
+    echo -e "DRY RUN: $1"
+  else
+    echo -e "$1"
+  fi
+}
+
+log "did an oopsie? recloning repo"
+
+currentdir=$(pwd)
+lastdir=${currentdir##*/}
+if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+  log "Not inside a git repository. Exiting."
+  exit 1
+fi
+git_url=$(git remote get-url origin)
+
+if [ -z $git_url ]; then
+  log "No remote URL found. Exiting."
+  exit 1
+fi
+
+git_branch=$(git branch --show-current)
+git_user=$(git config user.name)
+
+reclone_repo () {
+  log "repo name: $lastdir"
+  log "branch: $git_branch"
+  log "user: $git_user"
+  log "url: $git_url"
+  if [[ $dry_run == "1" ]]; then
+    log "RUNNING DRY: Would reclone the repository"
+    log "cd .."
+    log "rm -rf $lastdir"
+    log "git clone $git_url"
+    log "cd $lastdir"
+    log "git fetch"
+    log "git checkout $git_branch"
+    log "git pull"
+    log "okay, now everything is set up again. be careful next time!"
+  else
+    log "Recloning the repository..."
+    cd ..
+    log "Removing old directory: rm -rf $lastdir"
+    rm -rf "$lastdir"
+    log "Cloning the repository: git clone $git_url"
+    git clone "$git_url"
+    cd "$lastdir" || exit
+    log "Fetching latest changes: git fetch"
+    git fetch
+    log "Checking out branch: git checkout $git_branch"
+    git checkout "$git_branch"
+    log "Pulling latest changes: git pull"
+    git pull
+    log "Okay, now everything is set up again.\nBe careful next time!"
+  fi
+}
+
+reclone_repo
