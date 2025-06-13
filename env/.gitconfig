@@ -1,0 +1,8 @@
+[user]
+	name = caldeira04
+	email = joao.p.caldeira@icloud.com
+[credential]
+	helper = store
+[alias]
+  new = "!sh -c 'git checkout -b \"$1\" && git push -u origin \"$1\"' -"
+
